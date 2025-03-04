@@ -21,6 +21,12 @@ public class GameFinalResult {
     }
 
     public GameResult getGameResultFromPlayer(Player player, Dealer dealer) {
-        return gameRule.evaluateDealerWin(player, dealer);
+        if(gameRule.evaluateDealerWin(player, dealer) == GameResult.WIN) {
+            return GameResult.LOSE;
+        }
+        if(gameRule.evaluateDealerWin(player, dealer) == GameResult.LOSE){
+            return GameResult.WIN;
+        }
+        return GameResult.DRAW;
     }
 }
