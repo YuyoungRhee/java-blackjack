@@ -1,13 +1,12 @@
 package blackjack.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class CardDeck {
+public class PlayDeck {
     private final List<Card> cards = new ArrayList<>();
 
     public void add(Card card) {

@@ -1,7 +1,7 @@
 package blackjack.controller;
 
-import blackjack.domain.CardDeck;
-import blackjack.domain.CardGenerator;
+import blackjack.domain.PlayDeck;
+import blackjack.domain.GameDeck;
 import blackjack.domain.Dealer;
 import blackjack.domain.GameFinalResult;
 import blackjack.domain.GameResult;
@@ -16,12 +16,12 @@ import java.util.Map;
 public class BlackjackController {
     private InputVIew inputView;
     private OutputView outputView;
-    private final CardGenerator cardGenerator;
+    private final GameDeck gameDeck;
 
     public BlackjackController() {
         this.inputView = new InputVIew();
         this.outputView = new OutputView();
-        this.cardGenerator = new CardGenerator();
+        this.gameDeck = new GameDeck();
     }
 
     public void run() {
@@ -30,18 +30,18 @@ public class BlackjackController {
         List<Player> players = new ArrayList<>();
 
         for (String playerName : playerNames) {
-            CardDeck cardDeck = new CardDeck();
-            cardDeck.add(cardGenerator.generate());
-            cardDeck.add(cardGenerator.generate());
+            PlayDeck playDeck = new PlayDeck();
+            playDeck.add(gameDeck.generate());
+            playDeck.add(gameDeck.generate());
 
-            Player player = new Player(playerName, cardDeck, cardGenerator);
+            Player player = new Player(playerName, playDeck, gameDeck);
             players.add(player);
         }
 
-        CardDeck cardDeck = new CardDeck();
-        cardDeck.add(cardGenerator.generate());
-        cardDeck.add(cardGenerator.generate());
-        Dealer dealer = new Dealer(cardDeck, cardGenerator);
+        PlayDeck playDeck = new PlayDeck();
+        playDeck.add(gameDeck.generate());
+        playDeck.add(gameDeck.generate());
+        Dealer dealer = new Dealer(playDeck, gameDeck);
 
         outputView.displayDistributedCardStatus(dealer, players);
 

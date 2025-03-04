@@ -2,7 +2,7 @@ package blackjack.domain;
 
 import java.util.Random;
 
-public class CardGenerator {
+public class GameDeck {
     public Card generate() {
         CardSuit cardSuit = pickRandomSuit();
         CardRank cardRank = pickRandomRank();

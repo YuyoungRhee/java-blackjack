@@ -14,21 +14,21 @@ class GameFinalResultTest {
     @Test
     void testGameFinalResult1() {
         // given
-        CardDeck cardDeck1 = new CardDeck();
-        CardGenerator cardGenerator = new CardGenerator();
-        cardDeck1.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck1.add(new Card(CardSuit.CLUB, CardRank.SEVEN)); //16
-        Player player1 = new Player("player1", cardDeck1, cardGenerator);
+        PlayDeck playDeck1 = new PlayDeck();
+        GameDeck gameDeck = new GameDeck();
+        playDeck1.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck1.add(new Card(CardSuit.CLUB, CardRank.SEVEN)); //16
+        Player player1 = new Player("player1", playDeck1, gameDeck);
 
-        CardDeck cardDeck2 = new CardDeck();
-        cardDeck2.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck2.add(new Card(CardSuit.CLUB, CardRank.SEVEN)); //16
-        Player player2 = new Player("player2", cardDeck2, cardGenerator);
+        PlayDeck playDeck2 = new PlayDeck();
+        playDeck2.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck2.add(new Card(CardSuit.CLUB, CardRank.SEVEN)); //16
+        Player player2 = new Player("player2", playDeck2, gameDeck);
 
-        CardDeck cardDeck3 = new CardDeck();
-        cardDeck3.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck3.add(new Card(CardSuit.CLUB, CardRank.JACK)); //19
-        Dealer dealer = new Dealer(cardDeck3, cardGenerator);
+        PlayDeck playDeck3 = new PlayDeck();
+        playDeck3.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck3.add(new Card(CardSuit.CLUB, CardRank.JACK)); //19
+        Dealer dealer = new Dealer(playDeck3, gameDeck);
 
         GameFinalResult finalResult = new GameFinalResult(new GameRule());
         Map<GameResult, Integer> dealerFinalResult = finalResult.getDealerFinalResult(dealer,
@@ -41,21 +41,21 @@ class GameFinalResultTest {
     @Test
     void testGameFinalResult2() {
         // given
-        CardDeck cardDeck1 = new CardDeck();
-        CardGenerator cardGenerator = new CardGenerator();
-        cardDeck1.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck1.add(new Card(CardSuit.CLUB, CardRank.ACE)); // 20
-        Player player1 = new Player("player1", cardDeck1, cardGenerator);
+        PlayDeck playDeck1 = new PlayDeck();
+        GameDeck gameDeck = new GameDeck();
+        playDeck1.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck1.add(new Card(CardSuit.CLUB, CardRank.ACE)); // 20
+        Player player1 = new Player("player1", playDeck1, gameDeck);
 
-        CardDeck cardDeck2 = new CardDeck();
-        cardDeck2.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck2.add(new Card(CardSuit.CLUB, CardRank.SEVEN)); // 16
-        Player player2 = new Player("player2", cardDeck2, cardGenerator);
+        PlayDeck playDeck2 = new PlayDeck();
+        playDeck2.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck2.add(new Card(CardSuit.CLUB, CardRank.SEVEN)); // 16
+        Player player2 = new Player("player2", playDeck2, gameDeck);
 
-        CardDeck cardDeck3 = new CardDeck();
-        cardDeck3.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck3.add(new Card(CardSuit.CLUB, CardRank.JACK)); // 19
-        Dealer dealer = new Dealer(cardDeck3, cardGenerator);
+        PlayDeck playDeck3 = new PlayDeck();
+        playDeck3.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck3.add(new Card(CardSuit.CLUB, CardRank.JACK)); // 19
+        Dealer dealer = new Dealer(playDeck3, gameDeck);
 
         GameFinalResult finalResult = new GameFinalResult(new GameRule());
         Map<GameResult, Integer> dealerFinalResult = finalResult.getDealerFinalResult(dealer,
@@ -71,16 +71,16 @@ class GameFinalResultTest {
     @Test
     void testGameFinalResultFromPlayer_playerWin() {
         // given
-        CardDeck cardDeck1 = new CardDeck();
-        CardGenerator cardGenerator = new CardGenerator();
-        cardDeck1.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck1.add(new Card(CardSuit.CLUB, CardRank.ACE)); // 20
-        Player player1 = new Player("player1", cardDeck1, cardGenerator);
+        PlayDeck playDeck1 = new PlayDeck();
+        GameDeck gameDeck = new GameDeck();
+        playDeck1.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck1.add(new Card(CardSuit.CLUB, CardRank.ACE)); // 20
+        Player player1 = new Player("player1", playDeck1, gameDeck);
 
-        CardDeck cardDeck3 = new CardDeck();
-        cardDeck3.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck3.add(new Card(CardSuit.CLUB, CardRank.JACK)); // 19
-        Dealer dealer = new Dealer(cardDeck3, cardGenerator);
+        PlayDeck playDeck3 = new PlayDeck();
+        playDeck3.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck3.add(new Card(CardSuit.CLUB, CardRank.JACK)); // 19
+        Dealer dealer = new Dealer(playDeck3, gameDeck);
 
         GameFinalResult finalResult = new GameFinalResult(new GameRule());
         GameResult gameResult = finalResult.getGameResultFromPlayer(player1, dealer);
@@ -92,16 +92,16 @@ class GameFinalResultTest {
     @Test
     void testGameFinalResultFromPlayer_playerLose() {
         // given
-        CardDeck cardDeck1 = new CardDeck();
-        CardGenerator cardGenerator = new CardGenerator();
-        cardDeck1.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck1.add(new Card(CardSuit.CLUB, CardRank.FIVE)); // 14
-        Player player1 = new Player("player1", cardDeck1, cardGenerator);
+        PlayDeck playDeck1 = new PlayDeck();
+        GameDeck gameDeck = new GameDeck();
+        playDeck1.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck1.add(new Card(CardSuit.CLUB, CardRank.FIVE)); // 14
+        Player player1 = new Player("player1", playDeck1, gameDeck);
 
-        CardDeck cardDeck3 = new CardDeck();
-        cardDeck3.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck3.add(new Card(CardSuit.CLUB, CardRank.JACK)); // 19
-        Dealer dealer = new Dealer(cardDeck3, cardGenerator);
+        PlayDeck playDeck3 = new PlayDeck();
+        playDeck3.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck3.add(new Card(CardSuit.CLUB, CardRank.JACK)); // 19
+        Dealer dealer = new Dealer(playDeck3, gameDeck);
 
         GameFinalResult finalResult = new GameFinalResult(new GameRule());
         GameResult gameResult = finalResult.getGameResultFromPlayer(player1, dealer);

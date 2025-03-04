@@ -11,12 +11,12 @@ class PlayerTest {
     @Test
     void testPlayerCanDrawCard() {
         // given
-        CardDeck cardDeck = new CardDeck();
-        CardGenerator cardGenerator = new CardGenerator();
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.SEVEN));
+        PlayDeck playDeck = new PlayDeck();
+        GameDeck gameDeck = new GameDeck();
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.SEVEN));
 
-        Player player = new Player("user1", cardDeck, cardGenerator);
+        Player player = new Player("user1", playDeck, gameDeck);
 
         // when
         boolean canTakeExtraCard = player.canTakeExtraCard();
@@ -29,13 +29,13 @@ class PlayerTest {
     @Test
     void testPlayerCanDrawCard_false() {
         // given
-        CardDeck cardDeck = new CardDeck();
-        CardGenerator cardGenerator = new CardGenerator();
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.SEVEN));
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.EIGHT));
+        PlayDeck playDeck = new PlayDeck();
+        GameDeck gameDeck = new GameDeck();
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.SEVEN));
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.EIGHT));
 
-        Player player = new Player("user1", cardDeck, cardGenerator);
+        Player player = new Player("user1", playDeck, gameDeck);
 
         // when
         boolean canTakeExtraCard = player.canTakeExtraCard();
@@ -48,12 +48,12 @@ class PlayerTest {
     @Test
     void testPlayerTotalCardScore() {
         // given
-        CardDeck cardDeck = new CardDeck();
-        CardGenerator cardGenerator = new CardGenerator();
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.EIGHT)); //17
+        PlayDeck playDeck = new PlayDeck();
+        GameDeck gameDeck = new GameDeck();
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.EIGHT)); //17
 
-        Player player = new Player("user1", cardDeck, cardGenerator);
+        Player player = new Player("user1", playDeck, gameDeck);
 
         // when
         int totalScore = player.calculateScore();
@@ -64,12 +64,12 @@ class PlayerTest {
     @Test
     void testPlayerTotalCardScore_hasAce_noBust() {
         // given
-        CardDeck cardDeck = new CardDeck();
-        CardGenerator cardGenerator = new CardGenerator();
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.ACE)); //11 -> 20
+        PlayDeck playDeck = new PlayDeck();
+        GameDeck gameDeck = new GameDeck();
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.ACE)); //11 -> 20
 
-        Player player = new Player("user1", cardDeck, cardGenerator);
+        Player player = new Player("user1", playDeck, gameDeck);
 
         // when
         int totalScore = player.calculateScore();
@@ -80,13 +80,13 @@ class PlayerTest {
     @Test
     void testPlayerTotalCardScore_hasAce_Bust() {
         // given
-        CardDeck cardDeck = new CardDeck();
-        CardGenerator cardGenerator = new CardGenerator();
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.SEVEN)); //16
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.ACE)); //1선택 -> 17
+        PlayDeck playDeck = new PlayDeck();
+        GameDeck gameDeck = new GameDeck();
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.SEVEN)); //16
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.ACE)); //1선택 -> 17
 
-        Player player = new Player("user1", cardDeck, cardGenerator);
+        Player player = new Player("user1", playDeck, gameDeck);
 
         // when
         int totalScore = player.calculateScore();
@@ -97,13 +97,13 @@ class PlayerTest {
     @Test
     void testPlayerTotalCardScore_hasAce2() {
         // given
-        CardDeck cardDeck = new CardDeck();
-        CardGenerator cardGenerator = new CardGenerator();
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.NINE)); //9
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.ACE)); // 11선택 -> 20
-        cardDeck.add(new Card(CardSuit.HEART, CardRank.ACE)); //1선택 -> 21
+        PlayDeck playDeck = new PlayDeck();
+        GameDeck gameDeck = new GameDeck();
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.NINE)); //9
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.ACE)); // 11선택 -> 20
+        playDeck.add(new Card(CardSuit.HEART, CardRank.ACE)); //1선택 -> 21
 
-        Player player = new Player("user1", cardDeck, cardGenerator);
+        Player player = new Player("user1", playDeck, gameDeck);
 
         // when
         int totalScore = player.calculateScore();
@@ -114,14 +114,14 @@ class PlayerTest {
     @Test
     void testPlayerAddCard() {
         // given
-        CardDeck cardDeck = new CardDeck();
-        CardGenerator cardGenerator = new CardGenerator();
-        Player player = new Player("user1", cardDeck, cardGenerator);
+        PlayDeck playDeck = new PlayDeck();
+        GameDeck gameDeck = new GameDeck();
+        Player player = new Player("user1", playDeck, gameDeck);
 
         // when
         player.addCard();
 
         // then
-        assertThat(cardDeck.getDeckSize()).isEqualTo(1);
+        assertThat(playDeck.getDeckSize()).isEqualTo(1);
     }
 }

@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.Set;
 
 public class Dealer {
-    private final CardDeck cardDeck;
-    private final CardGenerator cardGenerator;
+    private final PlayDeck playDeck;
+    private final GameDeck gameDeck;
 
-    public Dealer(CardDeck cardDeck, CardGenerator cardGenerator) {
-        this.cardDeck = cardDeck;
-        this.cardGenerator = cardGenerator;
+    public Dealer(PlayDeck playDeck, GameDeck gameDeck) {
+        this.playDeck = playDeck;
+        this.gameDeck = gameDeck;
     }
 
     public boolean hasTakenExtraCard() {
@@ -26,11 +26,11 @@ public class Dealer {
     }
 
     private void takeExtraCard() {
-        cardDeck.add(cardGenerator.generate());
+        playDeck.add(gameDeck.generate());
     }
 
     public int calculateScore() {
-        Set<Integer> possibleScore = cardDeck.calculatePossibleSum();
+        Set<Integer> possibleScore = playDeck.calculatePossibleSum();
         return Collections.max(possibleScore);
     }
 
@@ -39,7 +39,7 @@ public class Dealer {
     }
 
     public List<Card> getCardDeck() {
-        return cardDeck.getCards();
+        return playDeck.getCards();
     }
 
 }

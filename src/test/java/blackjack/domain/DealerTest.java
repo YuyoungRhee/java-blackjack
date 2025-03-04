@@ -11,12 +11,12 @@ class DealerTest {
     @Test
     void testDealerGenerate() {
         // given
-        CardDeck cardDeck = new CardDeck();
-        CardGenerator cardGenerator = new CardGenerator();
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.SEVEN));
+        PlayDeck playDeck = new PlayDeck();
+        GameDeck gameDeck = new GameDeck();
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.SEVEN));
 
-        Dealer dealer = new Dealer(cardDeck, cardGenerator);
+        Dealer dealer = new Dealer(playDeck, gameDeck);
 
         // when
         boolean takenExtraCard = dealer.hasTakenExtraCard();
@@ -28,12 +28,12 @@ class DealerTest {
     @Test
     void testDealerGenerate2() {
         // given
-        CardDeck cardDeck = new CardDeck();
-        CardGenerator cardGenerator = new CardGenerator();
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.JACK));
+        PlayDeck playDeck = new PlayDeck();
+        GameDeck gameDeck = new GameDeck();
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.JACK));
 
-        Dealer dealer = new Dealer(cardDeck, cardGenerator);
+        Dealer dealer = new Dealer(playDeck, gameDeck);
 
         // when
         boolean takenExtraCard = dealer.hasTakenExtraCard();
@@ -45,12 +45,12 @@ class DealerTest {
     @Test
     void testDealerTotalCardSum() {
         // given
-        CardDeck cardDeck = new CardDeck();
-        CardGenerator cardGenerator = new CardGenerator();
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.EIGHT));
+        PlayDeck playDeck = new PlayDeck();
+        GameDeck gameDeck = new GameDeck();
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.EIGHT));
 
-        Dealer dealer = new Dealer(cardDeck, cardGenerator);
+        Dealer dealer = new Dealer(playDeck, gameDeck);
 
         // when
         int totalScore = dealer.calculateScore();
@@ -60,12 +60,12 @@ class DealerTest {
     @DisplayName("딜러의 점수가 21 초과면 버스트다.")
     @Test
     void testBust_False() {
-        CardDeck cardDeck = new CardDeck();
-        CardGenerator cardGenerator = new CardGenerator();
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.EIGHT));
+        PlayDeck playDeck = new PlayDeck();
+        GameDeck gameDeck = new GameDeck();
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.EIGHT));
 
-        Dealer dealer = new Dealer(cardDeck, cardGenerator);
+        Dealer dealer = new Dealer(playDeck, gameDeck);
 
         boolean bust = dealer.isBust();
 
@@ -75,13 +75,13 @@ class DealerTest {
     @DisplayName("딜러의 점수가 21 이하이면 버스트가 아니다.")
     @Test
     void testBust_True() {
-        CardDeck cardDeck = new CardDeck();
-        CardGenerator cardGenerator = new CardGenerator();
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.EIGHT));
-        cardDeck.add(new Card(CardSuit.CLUB, CardRank.FIVE));
+        PlayDeck playDeck = new PlayDeck();
+        GameDeck gameDeck = new GameDeck();
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.NINE));
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.EIGHT));
+        playDeck.add(new Card(CardSuit.CLUB, CardRank.FIVE));
 
-        Dealer dealer = new Dealer(cardDeck, cardGenerator);
+        Dealer dealer = new Dealer(playDeck, gameDeck);
 
         boolean bust = dealer.isBust();
 

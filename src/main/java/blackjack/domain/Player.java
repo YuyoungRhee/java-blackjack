@@ -6,25 +6,25 @@ import java.util.Set;
 
 public class Player {
     private final String name;
-    private final CardDeck cardDeck;
-    private final CardGenerator cardGenerator;
+    private final PlayDeck playDeck;
+    private final GameDeck gameDeck;
 
-    public Player(String name, CardDeck cardDeck, CardGenerator cardGenerator) {
+    public Player(String name, PlayDeck playDeck, GameDeck gameDeck) {
         this.name = name;
-        this.cardDeck = cardDeck;
-        this.cardGenerator = cardGenerator;
+        this.playDeck = playDeck;
+        this.gameDeck = gameDeck;
     }
 
 
     public boolean canTakeExtraCard() {
-        Set<Integer> possibleSum = cardDeck.calculatePossibleSum();
+        Set<Integer> possibleSum = playDeck.calculatePossibleSum();
         int minScore = Collections.min(possibleSum);
 
         return minScore <= 21;
     }
 
     public int calculateScore() {
-        Set<Integer> possibleSums = cardDeck.calculatePossibleSum();
+        Set<Integer> possibleSums = playDeck.calculatePossibleSum();
 
         // 21 이하 최대값 찾기
         return possibleSums.stream()
@@ -38,8 +38,8 @@ public class Player {
     }
 
     public void addCard() {
-        Card card = cardGenerator.generate();
-        cardDeck.add(card);
+        Card card = gameDeck.generate();
+        playDeck.add(card);
     }
 
     public String getName() {
@@ -47,6 +47,6 @@ public class Player {
     }
 
     public List<Card> getCardDeck() {
-        return cardDeck.getCards();
+        return playDeck.getCards();
     }
 }
