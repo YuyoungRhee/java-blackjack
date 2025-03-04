@@ -56,7 +56,7 @@ class PlayerTest {
         Player player = new Player("user1", cardDeck, cardGenerator);
 
         // when
-        int totalScore = player.calculateTotalCardScore();
+        int totalScore = player.calculateScore();
         assertThat(totalScore).isEqualTo(17);
     }
 
@@ -72,7 +72,7 @@ class PlayerTest {
         Player player = new Player("user1", cardDeck, cardGenerator);
 
         // when
-        int totalScore = player.calculateTotalCardScore();
+        int totalScore = player.calculateScore();
         assertThat(totalScore).isEqualTo(20);
     }
 
@@ -89,8 +89,25 @@ class PlayerTest {
         Player player = new Player("user1", cardDeck, cardGenerator);
 
         // when
-        int totalScore = player.calculateTotalCardScore();
+        int totalScore = player.calculateScore();
         assertThat(totalScore).isEqualTo(17);
+    }
+
+    @DisplayName("에이스가 여러개일때 최대 점수를 적절하게 구한다. (버스트되지않는 최대값)")
+    @Test
+    void testPlayerTotalCardScore_hasAce2() {
+        // given
+        CardDeck cardDeck = new CardDeck();
+        CardGenerator cardGenerator = new CardGenerator();
+        cardDeck.add(new Card(CardSuit.CLUB, CardRank.NINE)); //9
+        cardDeck.add(new Card(CardSuit.CLUB, CardRank.ACE)); // 11선택 -> 20
+        cardDeck.add(new Card(CardSuit.HEART, CardRank.ACE)); //1선택 -> 21
+
+        Player player = new Player("user1", cardDeck, cardGenerator);
+
+        // when
+        int totalScore = player.calculateScore();
+        assertThat(totalScore).isEqualTo(21);
     }
 
     @DisplayName("플레이어는 자신의 카드 덱에 카드를 추가할 수 있다")

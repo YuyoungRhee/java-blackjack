@@ -3,7 +3,7 @@ package blackjack.domain;
 public class GameRule {
 
     public GameResult evaluateDealerWin(Player player, Dealer dealer) {
-        int playerScore = player.calculateTotalCardScore();
+        int playerScore = player.calculateScore();
         int dealerScore = dealer.calculateTotalCardScore();
 
         //딜러 혹은 플레이어가 21이 넘어가면 결과가 나와야 됨

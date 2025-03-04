@@ -23,12 +23,16 @@ public class Player {
         return minScore <= 21;
     }
 
-    public int calculateTotalCardScore() {
-        Set<Integer> possibleSum = cardDeck.calculatePossibleSum();
-        if (isBust()) {
-            return Collections.min(possibleSum);
-        }
-        return Collections.max(possibleSum);
+//    public int calculateTotalCardScore() {
+//        Set<Integer> possibleSum = cardDeck.calculatePossibleSum();
+//        if (isBust()) {
+//            return Collections.min(possibleSum);
+//        }
+//        return Collections.max(possibleSum);
+//    }
+
+    public int calculateScore() {
+        return cardDeck.calculateScore();
     }
 
     public boolean isBust() {

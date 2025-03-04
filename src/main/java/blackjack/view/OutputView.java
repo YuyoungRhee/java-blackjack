@@ -50,7 +50,7 @@ public class OutputView {
         for (Player player : players) {
             sb.append(String.format("%s카드: ", player.getName()));
             sb.append(String.join(", ", player.getCardDeck().stream().map(Card::toString).toList()));
-            sb.append(String.format("- 결과: %d\n", player.calculateTotalCardScore()));
+            sb.append(String.format("- 결과: %d\n", player.calculateScore()));
         }
 
         System.out.println(sb);

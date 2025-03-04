@@ -20,6 +20,31 @@ class CardDeckTest {
         assertThat(possibleSums).isEqualTo(Set.of(10));
     }
 
+    @DisplayName("가지고있는 카드들의 총합 가능성을 계산한다.")
+    @Test
+    void testCards2() {
+        CardDeck cardDeck = new CardDeck();
+        cardDeck.add(new Card(CardSuit.HEART, CardRank.ACE));
+        cardDeck.add(new Card(CardSuit.CLUB, CardRank.EIGHT));
+
+        Set<Integer> possibleSums = cardDeck.calculatePossibleSum();
+
+        assertThat(possibleSums).isEqualTo(Set.of(9, 19));
+    }
+
+    @DisplayName("가지고있는 카드들의 총합 가능성을 계산한다. - 에이스 여러개")
+    @Test
+    void testCards3() {
+        CardDeck cardDeck = new CardDeck();
+        cardDeck.add(new Card(CardSuit.HEART, CardRank.ACE));
+        cardDeck.add(new Card(CardSuit.HEART, CardRank.ACE));
+        cardDeck.add(new Card(CardSuit.CLUB, CardRank.EIGHT));
+
+        Set<Integer> possibleSums = cardDeck.calculatePossibleSum();
+
+        assertThat(possibleSums).isEqualTo(Set.of(10,20,30));
+    }
+
     @DisplayName("총합 가능성 계산 시 에이스가 1인 경우와 11인 경우 모두 계산한다.")
     @Test
     void testCards_ace() {
