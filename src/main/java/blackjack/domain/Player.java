@@ -23,22 +23,18 @@ public class Player {
         return minScore <= 21;
     }
 
-//    public int calculateTotalCardScore() {
-//        Set<Integer> possibleSum = cardDeck.calculatePossibleSum();
-//        if (isBust()) {
-//            return Collections.min(possibleSum);
-//        }
-//        return Collections.max(possibleSum);
-//    }
-
     public int calculateScore() {
-        return cardDeck.calculateScore();
+        Set<Integer> possibleSums = cardDeck.calculatePossibleSum();
+
+        // 21 이하 최대값 찾기
+        return possibleSums.stream()
+                .filter(sum -> sum <= 21)
+                .max(Integer::compareTo)
+                .orElse(Collections.min(possibleSums)); // 전부 버스트라면 최소값 리턴
     }
 
     public boolean isBust() {
-        Set<Integer> possibleSum = cardDeck.calculatePossibleSum();
-        int totalScore = Collections.max(possibleSum);
-        return totalScore > 21;
+        return calculateScore() > 21;
     }
 
     public void addCard() {

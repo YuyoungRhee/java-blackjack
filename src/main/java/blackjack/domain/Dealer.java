@@ -22,25 +22,20 @@ public class Dealer {
     }
 
     private boolean mustTakeExtraCard() {
-        Set<Integer> possibleScore = cardDeck.calculatePossibleSum();
-        int max = Collections.max(possibleScore);
-
-        return max <= 16;
+        return calculateScore() <= 16;
     }
 
     private void takeExtraCard() {
         cardDeck.add(cardGenerator.generate());
     }
 
-    public int calculateTotalCardScore() {
+    public int calculateScore() {
         Set<Integer> possibleScore = cardDeck.calculatePossibleSum();
         return Collections.max(possibleScore);
     }
 
     public boolean isBust() {
-        int totalScore = calculateTotalCardScore();
-
-        return totalScore > 21;
+        return calculateScore() > 21;
     }
 
     public List<Card> getCardDeck() {

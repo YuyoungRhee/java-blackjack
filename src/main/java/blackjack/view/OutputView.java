@@ -45,7 +45,7 @@ public class OutputView {
         StringBuilder sb = new StringBuilder();
         sb.append("딜러카드: ");
         sb.append(String.join(", ", dealer.getCardDeck().stream().map(Card::toString).toList()));
-        sb.append(String.format("- 결과: %d\n", dealer.calculateTotalCardScore()));
+        sb.append(String.format("- 결과: %d\n", dealer.calculateScore()));
 
         for (Player player : players) {
             sb.append(String.format("%s카드: ", player.getName()));

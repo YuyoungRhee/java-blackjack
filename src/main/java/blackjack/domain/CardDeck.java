@@ -14,16 +14,6 @@ public class CardDeck {
         cards.add(card);
     }
 
-    public int calculateScore() {
-        Set<Integer> possibleSums = calculatePossibleSum();
-
-        // 21 이하 최대값 찾기
-        return possibleSums.stream()
-                .filter(sum -> sum <= 21)
-                .max(Integer::compareTo)
-                .orElse(Collections.min(possibleSums)); // 전부 버스트라면 최소값 리턴
-    }
-
     public Set<Integer> calculatePossibleSum() {
         Set<Integer> sums = new HashSet<>();
         sums.add(0);
@@ -33,7 +23,6 @@ public class CardDeck {
                     .flatMap(sum -> card.checkScore().stream().map(value -> sum + value))
                     .collect(Collectors.toSet());
         }
-
         return sums;
     }
 
