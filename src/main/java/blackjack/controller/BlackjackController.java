@@ -31,16 +31,16 @@ public class BlackjackController {
 
         for (String playerName : playerNames) {
             PlayDeck playDeck = new PlayDeck();
-            playDeck.add(gameDeck.generate());
-            playDeck.add(gameDeck.generate());
+            playDeck.add(gameDeck.draw());
+            playDeck.add(gameDeck.draw());
 
             Player player = new Player(playerName, playDeck, gameDeck);
             players.add(player);
         }
 
         PlayDeck playDeck = new PlayDeck();
-        playDeck.add(gameDeck.generate());
-        playDeck.add(gameDeck.generate());
+        playDeck.add(gameDeck.draw());
+        playDeck.add(gameDeck.draw());
         Dealer dealer = new Dealer(playDeck, gameDeck);
 
         outputView.displayDistributedCardStatus(dealer, players);

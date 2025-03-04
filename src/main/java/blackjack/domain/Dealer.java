@@ -26,7 +26,7 @@ public class Dealer {
     }
 
     private void takeExtraCard() {
-        playDeck.add(gameDeck.generate());
+        playDeck.add(gameDeck.draw());
     }
 
     public int calculateScore() {

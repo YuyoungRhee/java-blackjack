@@ -38,7 +38,7 @@ public class Player {
     }
 
     public void addCard() {
-        Card card = gameDeck.generate();
+        Card card = gameDeck.draw();
         playDeck.add(card);
     }
 
