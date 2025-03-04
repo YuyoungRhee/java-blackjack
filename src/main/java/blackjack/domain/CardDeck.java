@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class CardDeck {
     private final List<Card> cards = new ArrayList<>();
@@ -28,14 +29,11 @@ public class CardDeck {
         sums.add(0);
 
         for (Card card : cards) {
-            Set<Integer> newSums = new HashSet<>();
-            for (int sum : sums) {
-                for (int value : card.checkScore()) {
-                    newSums.add(sum + value);
-                }
-            }
-            sums = newSums;
+            sums = sums.stream()
+                    .flatMap(sum -> card.checkScore().stream().map(value -> sum + value))
+                    .collect(Collectors.toSet());
         }
+
         return sums;
     }
 
