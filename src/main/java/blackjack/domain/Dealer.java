@@ -13,6 +13,13 @@ public class Dealer {
         this.gameDeck = gameDeck;
     }
 
+    public static Dealer createWithDeck(GameDeck gameDeck) {
+        PlayDeck playDeck = new PlayDeck();
+        playDeck.add(gameDeck.draw());
+        playDeck.add(gameDeck.draw());
+        return new Dealer(playDeck, gameDeck);
+    }
+
     public boolean hasTakenExtraCard() {
         if (mustTakeExtraCard()) {
             takeExtraCard();

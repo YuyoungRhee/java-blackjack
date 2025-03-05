@@ -15,6 +15,13 @@ public class Player {
         this.gameDeck = gameDeck;
     }
 
+    public static Player createInitialPlayer(String name, GameDeck gameDeck) {
+        PlayDeck playDeck = new PlayDeck();
+        playDeck.add(gameDeck.draw());
+        playDeck.add(gameDeck.draw());
+        return new Player(name, playDeck, gameDeck);
+    }
+
 
     public boolean canTakeExtraCard() {
         Set<Integer> possibleSum = playDeck.calculatePossibleSum();
