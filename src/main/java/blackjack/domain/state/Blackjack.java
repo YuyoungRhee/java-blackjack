@@ -1,29 +1,29 @@
-package blackjack.state;
+package blackjack.domain.state;
 
 import blackjack.domain.GameResult;
-import blackjack.domain.Score;
-import blackjack.domain.card.Card;
 import blackjack.domain.card.CardHand;
-import java.util.List;
 
-public class Bust extends Finished{
+public class Blackjack extends Finished{
 
-    public Bust(CardHand cardHand) {
+    public Blackjack(CardHand cardHand) {
         super(cardHand);
     }
 
     @Override
     public GameResult determineResult(State otherState) {
-        return GameResult.LOSE;
+        if (otherState.isBlackjack()) {
+            return GameResult.DRAW;
+        }
+        return GameResult.BLACKJACK_WIN;
     }
 
     @Override
     public boolean isBlackjack() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isBust() {
-        return true;
+        return false;
     }
 }

@@ -9,7 +9,7 @@ import blackjack.domain.participant.ParticipantName;
 import blackjack.domain.participant.Player;
 import blackjack.dto.CardInfoDto;
 import blackjack.dto.FinalResultDto;
-import blackjack.state.Start;
+import blackjack.domain.state.Start;
 import blackjack.util.RetryUtil;
 import blackjack.view.InputView;
 import blackjack.view.OutputView;

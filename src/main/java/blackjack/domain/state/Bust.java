@@ -1,29 +1,26 @@
-package blackjack.state;
+package blackjack.domain.state;
 
 import blackjack.domain.GameResult;
 import blackjack.domain.card.CardHand;
 
-public class Blackjack extends Finished{
+public class Bust extends Finished{
 
-    public Blackjack(CardHand cardHand) {
+    public Bust(CardHand cardHand) {
         super(cardHand);
     }
 
     @Override
     public GameResult determineResult(State otherState) {
-        if (otherState.isBlackjack()) {
-            return GameResult.DRAW;
-        }
-        return GameResult.BLACKJACK_WIN;
+        return GameResult.LOSE;
     }
 
     @Override
     public boolean isBlackjack() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isBust() {
-        return false;
+        return true;
     }
 }

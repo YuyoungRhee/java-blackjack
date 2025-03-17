@@ -1,9 +1,13 @@
-package blackjack.state;
+package blackjack.domain.state;
 
 import blackjack.domain.card.Card;
 import blackjack.domain.card.CardHand;
 import blackjack.domain.card.CardRank;
 import blackjack.domain.card.CardSuit;
+import blackjack.domain.state.Bust;
+import blackjack.domain.state.Hit;
+import blackjack.domain.state.Stand;
+import blackjack.domain.state.State;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;

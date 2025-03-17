@@ -3,7 +3,7 @@ package blackjack.domain.participant;
 import blackjack.domain.BettingMoney;
 import blackjack.domain.GameResult;
 import blackjack.domain.card.Card;
-import blackjack.state.State;
+import blackjack.domain.state.State;
 import java.util.List;
 
 public class Player extends Participant {

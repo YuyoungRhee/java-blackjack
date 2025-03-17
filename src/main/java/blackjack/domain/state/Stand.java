@@ -1,10 +1,8 @@
-package blackjack.state;
+package blackjack.domain.state;
 
 import blackjack.domain.GameResult;
 import blackjack.domain.Score;
-import blackjack.domain.card.Card;
 import blackjack.domain.card.CardHand;
-import java.util.List;
 
 public class Stand extends Finished {
 

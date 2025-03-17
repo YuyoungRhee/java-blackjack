@@ -2,7 +2,7 @@ package blackjack.domain.participant;
 
 import blackjack.domain.Score;
 import blackjack.domain.card.Card;
-import blackjack.state.State;
+import blackjack.domain.state.State;
 import java.util.List;
 
 public abstract class Participant {

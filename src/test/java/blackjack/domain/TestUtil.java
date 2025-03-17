@@ -3,10 +3,10 @@ package blackjack.domain;
 import blackjack.domain.card.CardHand;
 import blackjack.domain.participant.ParticipantName;
 import blackjack.domain.participant.Player;
-import blackjack.state.Blackjack;
-import blackjack.state.Hit;
-import blackjack.state.Stand;
-import blackjack.state.Start;
+import blackjack.domain.state.Blackjack;
+import blackjack.domain.state.Hit;
+import blackjack.domain.state.Stand;
+import blackjack.domain.state.Start;
 
 public class TestUtil {
 

@@ -3,19 +3,14 @@ package blackjack.domain.participant;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import blackjack.domain.BettingMoney;
-import blackjack.domain.BlackjackGame;
-import blackjack.domain.GameResult;
 import blackjack.domain.TestUtil;
 import blackjack.domain.card.Card;
 
 import blackjack.domain.card.CardHand;
 import blackjack.domain.card.CardRank;
 import blackjack.domain.card.CardSuit;
-import blackjack.state.Blackjack;
-import blackjack.state.Stand;
-import blackjack.state.Start;
-import blackjack.state.State;
+import blackjack.domain.state.Blackjack;
+import blackjack.domain.state.Stand;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
